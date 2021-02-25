@@ -77,8 +77,9 @@ app.delete('/goals/:id', async (req, res) => {
 
 const monsoUser = process.env.MONGODB_USERNAME;
 const mongoPass = process.env.MONGODB_PASSWORD;
+const mongodbAddress = 'mongodb'; // service name, courtesy of docker-compose network
 mongoose.connect(
-  `mongodb://${monsoUser}:${mongoPass}@mongodb:27017/course-goals?authSource=admin`,
+  `mongodb://${monsoUser}:${mongoPass}@${mongodbAddress}:27017/course-goals?authSource=admin`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
