@@ -82,8 +82,10 @@ const mongodbPass = process.env.MONGODB_PASSWORD;
 const mongodbUrl = process.env.MONGODB_URL; // we'll provide a different value when running in ECS
 const mongodbPort = 27017;
 const database = 'course-goals';
+const fullUrl = `mongodb://${mongodbUser}:${mongodbPass}@${mongodbUrl}:${mongodbPort}/${database}?authSource=admin`;
+console.log('connetting to: ' + fullUrl);
 mongoose.connect(
-  `mongodb://${mongodbUser}:${mongodbPass}@${mongodbUrl}:${mongodbPort}/${database}?authSource=admin`,
+  fullUrl,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
