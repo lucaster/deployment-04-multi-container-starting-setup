@@ -75,6 +75,20 @@ app.delete('/goals/:id', async (req, res) => {
   }
 });
 
+app.get('/', async (req, res) => {
+  console.log('CHECKING HEALTH');
+  try {
+    res.status(200).json({
+      status: 'OK'
+    });
+    console.log('HEALTH CHECKED');
+  } catch (err) {
+    console.error('ERROR CHECKING HEALTH');
+    console.error(err.message);
+    res.status(500).json({ message: 'Failed to check health.' });
+  }
+});
+
 const mongodbUser = process.env.MONGODB_USERNAME;
 const mongodbPass = process.env.MONGODB_PASSWORD;
 //const mongodbAddress = 'mongodb'; // service name, courtesy of docker-compose network
