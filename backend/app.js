@@ -79,11 +79,11 @@ const mongodbUser = process.env.MONGODB_USERNAME;
 const mongodbPass = process.env.MONGODB_PASSWORD;
 //const mongodbAddress = 'mongodb'; // service name, courtesy of docker-compose network
 //const mongodbAddress = 'localhost'; // works on ECS if containers are in same Task
-const mongodbAddress = process.env.MONGODB_URL; // we'll provide a different value when running in ECS
+const mongodbUrl = process.env.MONGODB_URL; // we'll provide a different value when running in ECS
 const mongodbPort = 27017;
 const database = 'course-goals';
 mongoose.connect(
-  `mongodb://${mongodbUser}:${mongodbPass}@${mongodbAddress}:${mongodbPort}/${database}?authSource=admin`,
+  `mongodb://${mongodbUser}:${mongodbPass}@${mongodbUrl}:${mongodbPort}/${database}?authSource=admin`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
