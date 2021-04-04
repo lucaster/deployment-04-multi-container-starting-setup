@@ -98,19 +98,21 @@ const mongodbPort = 27017;
 const database = 'course-goals';
 const fullUrl = `mongodb://${mongodbUser}:${mongodbPass}@${mongodbUrl}:${mongodbPort}/${database}?authSource=admin`;
 console.log('connetting to: ' + fullUrl);
-mongoose.connect(
-  fullUrl,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
-  (err) => {
-    if (err) {
-      console.error('FAILED TO CONNECT TO MONGODB');
-      console.error(err);
-    } else {
-      console.log('CONNECTED TO MONGODB!!');
-      app.listen(80);
+setTimeout(() => {
+  mongoose.connect(
+    fullUrl,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    },
+    (err) => {
+      if (err) {
+        console.error('FAILED TO CONNECT TO MONGODB');
+        console.error(err);
+      } else {
+        console.log('CONNECTED TO MONGODB!!');
+        app.listen(80);
+      }
     }
-  }
-);
+  );
+}, 60000);
