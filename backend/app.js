@@ -97,7 +97,7 @@ const mongodbUrl = process.env.MONGODB_URL; // we'll provide a different value w
 const mongodbPort = 27017;
 const database = 'course-goals';
 const fullUrl = `mongodb://${mongodbUser}:${mongodbPass}@${mongodbUrl}:${mongodbPort}/${database}?authSource=admin`;
-const atlasUrl = `mongodb+srv://${mongodbUser}:${mongodbPass}@${mongodbUrl}:${mongodbPort}/${database}?retryWrites=true&w=majority&authSource=admin`;
+const atlasUrl = `mongodb+srv://${mongodbUser}:${mongodbPass}@${mongodbUrl}/${database}?retryWrites=true&w=majority`;
 console.log('connetting to: ' + atlasUrl);
 setTimeout(() => {
   mongoose.connect(
